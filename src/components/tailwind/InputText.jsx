@@ -7,26 +7,23 @@ export default function InputText({ placeholder }) {
   function handleChange(e) {
     const novoValor = e.target.value;
     setValor(novoValor);
-
-    // verifica se está vazio
     setErro(novoValor.trim() === "");
   }
 
   return (
-    <>
+    <div className="flex flex-col mb-3">
       <input
         type="text"
         placeholder={placeholder}
         value={valor}
         onChange={handleChange}
+        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:border-blue-600 focus:ring-1 focus:ring-blue-400 outline-none"
       />
-      {erro && <p>⚠️ O campo não pode ficar vazio.</p>}
-    </>
+      {erro && (
+        <p className="text-sm text-red-600 mt-1">
+          ⚠️ O campo não pode ficar vazio.
+        </p>
+      )}
+    </div>
   );
 }
-/*
-{erro && <p>⚠️ O campo não pode ficar vazio.</p>}
-é uma forma comum em React de renderizar algo condicionalmente.
-Se o valor da esquerda (erro) for true, ele retorna o valor da direita (<p>...</p>).
-Se for false, ele retorna false (e React simplesmente não renderiza nada).
-*/

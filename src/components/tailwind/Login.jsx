@@ -1,4 +1,4 @@
-import "./Login.css";
+import React from "react";
 
 import Label from "./Label.jsx";
 import LabelTitle from "./LabelTitle.jsx";
@@ -8,16 +8,16 @@ import InputPassword from "./InputPassword.jsx";
 
 function Login() {
   return (
-    <div className="login-container">
-      <form className="login-form">
+    <div className="flex justify-center items-center h-screen w-screen bg-gray-100">
+      <form className="bg-white p-8 rounded-lg shadow-md w-80">
         <LabelTitle texto="Login" />
 
-        <div className="form-group">
+        <div className="mb-4 flex flex-col">
           <Label texto="Usuário:" />
           <InputText placeholder="user..." />
         </div>
 
-        <div className="form-group">
+        <div className="mb-4 flex flex-col">
           <Label texto="Senha:" />
           <InputPassword placeholder="password..." />
         </div>
@@ -27,5 +27,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;
