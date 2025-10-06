@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 1vh;
     background-color: #f5f5f5;
   }
   
   .login-form {
-    background: white;
+    background: rgba(250, 249, 249, 0.993);
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: 320px;
   }
