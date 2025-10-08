@@ -1,4 +1,3 @@
-
 import './InputPassword.css';
 import React, { useState } from 'react';
 
