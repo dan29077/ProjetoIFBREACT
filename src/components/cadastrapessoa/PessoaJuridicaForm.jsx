@@ -1,6 +1,6 @@
 // PessoaJuridicaForm.jsx
 import React from "react";
-import { Button, Form, Input, DatePicker } from "antd";
+import { Form, Input, DatePicker, Button} from "antd";
 import "./pessoaform.css";
 
 function PessoaJuridicaForm() {
