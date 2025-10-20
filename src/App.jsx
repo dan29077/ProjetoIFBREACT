@@ -3,10 +3,7 @@
 //import Login from "./components/CSS/Login.jsx"
 //import Login from "./components/tailwind/Login.jsx"
 //import Login from "./components/antd/Login.jsx"
-//import PessoaForm from "./components/cadastrapessoa/PessoaForm.jsx"
-//import PessoaForm from "./components/cadastrapessoa/PessoaFisicaForm.jsx"
-//import PessoaForm from "./components/cadastrapessoa/PessoaJuridicaForm.jsx"
-import PessoaForm from "./components/cadastrapessoa/EnderecoForm.jsx"
+import PessoaForm from "./components/cadastrapessoa/PessoaForm.jsx"
 function App() {
 
   return (

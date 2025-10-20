@@ -48,7 +48,7 @@ function EnderecoForm() {
         {}
         <Input 
             placeholder="00000-000" 
-            maxLength={9} 
+            maxLength={8} 
             onBlur={handleCepSearch} // <-- Ação principal
         />
       </Form.Item>
