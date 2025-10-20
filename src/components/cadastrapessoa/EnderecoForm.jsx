@@ -7,7 +7,7 @@ function EnderecoForm() {
   const [form] = Form.useForm(); 
 
   const handleCepSearch = async (event) => {
-    const cep = event.target.value.replace(/\D/g, ""); // Limpa o CEP (somente dígitos)
+    const cep = event.target.value.replace(/\D/g, "");
     
     if (cep.length === 8) {
       try {
@@ -62,8 +62,8 @@ function EnderecoForm() {
         <Input 
             placeholder="00000-000" 
             maxLength={8} // 8 dígitos numéricos
-            onBlur={handleCepSearch} // Dispara a busca
-            onChange={handleCepChange} // Filtra para apenas números
+            onBlur={handleCepSearch} 
+            onChange={handleCepChange}
             inputMode="numeric" 
         />
       </Form.Item>
@@ -109,7 +109,6 @@ function EnderecoForm() {
             name={["endereco", "regiao"]}
             rules={[{ required: true, message: "Selecione a região!" }]}
           >
-            {/* O usuário deve selecionar a região manualmente */}
             <Select placeholder="Selecione">
               <Option value="Norte">Norte</Option>
               <Option value="Nordeste">Nordeste</Option>
