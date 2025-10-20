@@ -5,8 +5,9 @@ const { Option } = Select;
 
 function EnderecoForm() {
   const [form] = Form.useForm(); 
+
   const handleCepSearch = async (event) => {
-    const cep = event.target.value.replace(/\D/g, "");
+    const cep = event.target.value.replace(/\D/g, ""); // Limpa o CEP (somente dígitos)
     
     if (cep.length === 8) {
       try {
@@ -20,6 +21,7 @@ function EnderecoForm() {
               bairro: data.bairro,
               cidade: data.localidade,
               uf: data.uf,
+              cep: data.cep.replace('-', ''), 
             },
           });
         } else {
@@ -29,6 +31,7 @@ function EnderecoForm() {
                 bairro: "",
                 cidade: "",
                 uf: "",
+                regiao: undefined,
               },
            });
         }
@@ -38,6 +41,17 @@ function EnderecoForm() {
     }
   };
 
+  const handleCepChange = (e) => {
+    const { value } = e.target;
+    const numericValue = value.replace(/\D/g, ''); 
+    
+    form.setFieldsValue({
+      endereco: {
+        cep: numericValue,
+      },
+    });
+  };
+
   return (
     <Form form={form} layout="vertical"> 
       <Form.Item
@@ -45,11 +59,12 @@ function EnderecoForm() {
         name={["endereco", "cep"]}
         rules={[{ required: true, message: "Informe o CEP!" }]}
       >
-        {}
         <Input 
             placeholder="00000-000" 
-            maxLength={8} 
-            onBlur={handleCepSearch} // <-- Ação principal
+            maxLength={8} // 8 dígitos numéricos
+            onBlur={handleCepSearch} // Dispara a busca
+            onChange={handleCepChange} // Filtra para apenas números
+            inputMode="numeric" 
         />
       </Form.Item>
 
@@ -94,6 +109,7 @@ function EnderecoForm() {
             name={["endereco", "regiao"]}
             rules={[{ required: true, message: "Selecione a região!" }]}
           >
+            {/* O usuário deve selecionar a região manualmente */}
             <Select placeholder="Selecione">
               <Option value="Norte">Norte</Option>
               <Option value="Nordeste">Nordeste</Option>
