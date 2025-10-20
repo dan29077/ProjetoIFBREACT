@@ -4,14 +4,53 @@ import { Form, Input, Row, Col, Select } from "antd";
 const { Option } = Select;
 
 function EnderecoForm() {
+  const [form] = Form.useForm(); 
+  const handleCepSearch = async (event) => {
+    const cep = event.target.value.replace(/\D/g, "");
+    
+    if (cep.length === 8) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const data = await response.json();
+
+        if (!data.erro) {
+          form.setFieldsValue({
+            endereco: {
+              logradouro: data.logradouro,
+              bairro: data.bairro,
+              cidade: data.localidade,
+              uf: data.uf,
+            },
+          });
+        } else {
+           form.setFieldsValue({
+              endereco: {
+                logradouro: "",
+                bairro: "",
+                cidade: "",
+                uf: "",
+              },
+           });
+        }
+      } catch (error) {
+        console.error("Erro ao buscar CEP:", error);
+      }
+    }
+  };
+
   return (
-    <>
+    <Form form={form} layout="vertical"> 
       <Form.Item
         label="CEP"
         name={["endereco", "cep"]}
         rules={[{ required: true, message: "Informe o CEP!" }]}
       >
-        <Input placeholder="00000-000" maxLength={9} />
+        {}
+        <Input 
+            placeholder="00000-000" 
+            maxLength={9} 
+            onBlur={handleCepSearch} // <-- Ação principal
+        />
       </Form.Item>
 
       <Form.Item
@@ -65,7 +104,7 @@ function EnderecoForm() {
           </Form.Item>
         </Col>
       </Row>
-    </>
+    </Form>
   );
 }
 
