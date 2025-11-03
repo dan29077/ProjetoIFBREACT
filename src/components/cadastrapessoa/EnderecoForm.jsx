@@ -1,71 +1,18 @@
+
 import React from "react";
 import { Form, Input, Row, Col, Select } from "antd";
 
 const { Option } = Select;
 
 function EnderecoForm() {
-  const [form] = Form.useForm(); 
-
-  const handleCepSearch = async (event) => {
-    const cep = event.target.value.replace(/\D/g, "");
-    
-    if (cep.length === 8) {
-      try {
-        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-        const data = await response.json();
-
-        if (!data.erro) {
-          form.setFieldsValue({
-            endereco: {
-              logradouro: data.logradouro,
-              bairro: data.bairro,
-              cidade: data.localidade,
-              uf: data.uf,
-              cep: data.cep.replace('-', ''), 
-            },
-          });
-        } else {
-           form.setFieldsValue({
-              endereco: {
-                logradouro: "",
-                bairro: "",
-                cidade: "",
-                uf: "",
-                regiao: undefined,
-              },
-           });
-        }
-      } catch (error) {
-        console.error("Erro ao buscar CEP:", error);
-      }
-    }
-  };
-
-  const handleCepChange = (e) => {
-    const { value } = e.target;
-    const numericValue = value.replace(/\D/g, ''); 
-    
-    form.setFieldsValue({
-      endereco: {
-        cep: numericValue,
-      },
-    });
-  };
-
   return (
-    <Form form={form} layout="vertical"> 
+    <>
       <Form.Item
         label="CEP"
         name={["endereco", "cep"]}
         rules={[{ required: true, message: "Informe o CEP!" }]}
       >
-        <Input 
-            placeholder="00000-000" 
-            maxLength={8} // 8 dígitos numéricos
-            onBlur={handleCepSearch} 
-            onChange={handleCepChange}
-            inputMode="numeric" 
-        />
+        <Input placeholder="00000-000" maxLength={9} />
       </Form.Item>
 
       <Form.Item
@@ -85,7 +32,7 @@ function EnderecoForm() {
       </Form.Item>
 
       <Row gutter={8}>
-        <Col span={12}>
+        <Col span={13}>
           <Form.Item
             label="Cidade"
             name={["endereco", "cidade"]}
@@ -94,7 +41,7 @@ function EnderecoForm() {
             <Input placeholder="Cidade" />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={3}>
           <Form.Item
             label="UF"
             name={["endereco", "uf"]}
@@ -103,7 +50,7 @@ function EnderecoForm() {
             <Input placeholder="UF" maxLength={2} />
           </Form.Item>
         </Col>
-        <Col span={6}>
+        <Col span={8}>
          <Form.Item
             label="Região"
             name={["endereco", "regiao"]}
@@ -119,7 +66,7 @@ function EnderecoForm() {
           </Form.Item>
         </Col>
       </Row>
-    </Form>
+    </>
   );
 }
 
