@@ -3,8 +3,8 @@ import { Form, Input, Button, Radio, message } from "antd";
 import { ArrowUpOutlined } from "@ant-design/icons";
 import EnderecoForm from "./EnderecoFormEX";
 import TelefoneList from "./TelefoneListOO";
-import PFForm from "./PessoaFisicaForm";
-import PJForm from "./PessoaJuridicaForm";
+import PessoaFisicaorm from "./PessoaFisicaForm";
+import PessoaJuridicaForm from "./PessoaJuridicaForm";
 import "./pessoaform.css";
 
 // === Importação das classes de modelo (todas dentro da pasta /pessoas)
@@ -201,7 +201,7 @@ function PessoaForm() {
           <TelefoneList form={form} />
 
           {/* PF ou PJ */}
-          {tipo === "PF" ? <PFForm /> : <PJForm />}
+          {tipo === "PF" ? <PessoaFisicaForm /> : <PessoaJuridicaForm />}
 
           <Form.Item>
             <Button type="primary" htmlType="submit" block>
