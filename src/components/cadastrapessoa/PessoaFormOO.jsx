@@ -3,7 +3,7 @@ import { Form, Input, Button, Radio, message } from "antd";
 import { ArrowUpOutlined } from "@ant-design/icons";
 import EnderecoForm from "./EnderecoFormEX";
 import TelefoneList from "./TelefoneListOO";
-import PessoaFisicaorm from "./PessoaFisicaForm";
+import PessoaFisicaForm from "./PessoaFisicaForm";
 import PessoaJuridicaForm from "./PessoaJuridicaForm";
 import "./pessoaform.css";
 
