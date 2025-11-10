@@ -92,9 +92,9 @@ function PessoaForm() {
           <TelefoneList form={form} />
 
           {tipo === "PF" ? (
-           <PFForm/>
+           <PessoaFisicaForm/>
           ) : (
-            <PJForm/>
+            <PessoaJuridicaForm/>
           )}
 
           <Form.Item>

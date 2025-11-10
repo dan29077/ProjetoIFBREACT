@@ -271,7 +271,7 @@ export default function PessoaFormOOV2() {
 
           <EnderecoForm />
           <TelefoneList form={form} />
-          {tipo === "PF" ? <PFForm /> : <PJForm />}
+          {tipo === "PF" ? <PessoaFisicaForm /> : <PessoaJuridicaForm />}
 
           <Form.Item style={{ marginTop: 20 }}>
             <Button type="primary" htmlType="submit" block>
