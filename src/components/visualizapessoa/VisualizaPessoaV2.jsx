@@ -63,7 +63,7 @@ export default function VisualizaPessoa() {
             <>
               <Descriptions.Item label="CPF">{pessoa.cpf}</Descriptions.Item>
               
-              {/* 🆕 IMPLEMENTAÇÃO: Data de Nascimento (PF) */}
+              {/* IMPLEMENTAÇÃO: Data de Nascimento (PF) */}
               <Descriptions.Item label="Data de Nascimento">
                 {formatarData(pessoa.dataNascimento)}
               </Descriptions.Item>
@@ -73,7 +73,7 @@ export default function VisualizaPessoa() {
             <>
               <Descriptions.Item label="CNPJ">{pessoa.cnpj}</Descriptions.Item>
               
-              {/* 🆕 IMPLEMENTAÇÃO: Data de Registro (PJ principal) */}
+              {/* IMPLEMENTAÇÃO: Data de Registro (PJ principal) */}
               <Descriptions.Item label="Data de Registro">
                 {formatarData(pessoa.dataRegistro)}
               </Descriptions.Item>

@@ -31,7 +31,7 @@ export default class PJDAO {
       email: pj.getEmail?.(),
       cnpj: pj.getCNPJ?.(),
       
-      // 🆕 IMPLEMENTAÇÃO: Adicionar a Data de Registro da Pessoa Jurídica (PJ)
+      // IMPLEMENTAÇÃO: Adicionar a Data de Registro da Pessoa Jurídica (PJ)
       dataRegistro: pj.getDataRegistro?.(),
       
       endereco: end

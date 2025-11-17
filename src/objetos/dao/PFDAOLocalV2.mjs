@@ -32,7 +32,7 @@ export default class PFDAO {
       email: pf.getEmail?.(),
       cpf: pf.getCPF?.(),
       
-      // 🆕 IMPLEMENTAÇÃO: Adicionar a Data de Nascimento
+      // IMPLEMENTAÇÃO: Adicionar a Data de Nascimento
       dataNascimento: pf.getDataNascimento?.(),
       
       endereco: end

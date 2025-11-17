@@ -6,7 +6,7 @@ import IE from "./IE.mjs";
 export default class PJ extends Pessoa {
   #cnpj;
   #ie;
-  // 🆕 Novo atributo para Data de Registro
+  // Novo atributo para Data de Registro
   #dataRegistro; 
 
   setCNPJ(cnpj) {
@@ -34,7 +34,7 @@ export default class PJ extends Pessoa {
     return this.#ie;
   }
   
-  // 🆕 Setter para Data de Registro
+  // Setter para Data de Registro
   setDataRegistro(data) {
     if (data) {
       this.#dataRegistro = data;
@@ -43,7 +43,7 @@ export default class PJ extends Pessoa {
     return false;
   }
 
-  // 🆕 Getter para Data de Registro
+  // Getter para Data de Registro
   getDataRegistro() {
     return this.#dataRegistro;
   }

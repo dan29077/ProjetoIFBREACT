@@ -60,14 +60,14 @@ export default function PessoaFormOOV2() {
           valores.cpf = pessoa.cpf;
           valores.titulo = pessoa.titulo || { numero: "", zona: "", secao: "" };
           
-          // 🆕 IMPLEMENTAÇÃO: Carregar Data de Nascimento (PF)
+          // IMPLEMENTAÇÃO: Carregar Data de Nascimento (PF)
           valores.dataNascimento = pessoa.dataNascimento 
               ? dayjs(pessoa.dataNascimento) 
               : null;
               
         } else {
           
-          // 🆕 IMPLEMENTAÇÃO: Carregar Data de Registro (PJ principal)
+          // IMPLEMENTAÇÃO: Carregar Data de Registro (PJ principal)
           valores.dataRegistro = pessoa.dataRegistro 
               ? dayjs(pessoa.dataRegistro) 
               : null; 
@@ -165,7 +165,7 @@ export default function PessoaFormOOV2() {
         pj.setCNPJ(values.cnpj);
         pj.setEndereco(end);
         
-        // 🆕 IMPLEMENTAÇÃO: Set Data de Registro (PJ principal)
+        // IMPLEMENTAÇÃO: Set Data de Registro (PJ principal)
         if (values.dataRegistro) {
           const dataReg = values.dataRegistro;
           // Converte dayjs para string no formato YYYY-MM-DD

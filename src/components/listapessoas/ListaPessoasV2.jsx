@@ -15,7 +15,7 @@ export default function ListaPessoas() {
   const pfDAO = new PFDAO();
   const pjDAO = new PJDAO();
 
-  // 🔹 Atualiza a lista conforme o tipo ou filtro
+  // Atualiza a lista conforme o tipo ou filtro
   function carregarLista() {
     const dao = tipo === "PF" ? pfDAO : pjDAO;
     const lista = dao.listar();
@@ -49,7 +49,7 @@ export default function ListaPessoas() {
       dataIndex: "email",
       key: "email",
     },
-    // 🆕 Coluna Data de Nascimento / Data de Registro
+    // Coluna Data de Nascimento / Data de Registro
     {
       title: tipo === "PF" ? "Nascimento" : "Registro",
       dataIndex: tipo === "PF" ? "dataNascimento" : "dataRegistro",

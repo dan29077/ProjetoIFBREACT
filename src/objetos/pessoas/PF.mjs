@@ -6,7 +6,7 @@ import Titulo from "./Titulo.mjs";
 export default class PF extends Pessoa {
   #cpf;
   #titulo;
-  // 🆕 Novo atributo para Data de Nascimento
+  // Novo atributo para Data de Nascimento
   #dataNascimento; 
 
   setCPF(cpf) {
@@ -34,7 +34,7 @@ export default class PF extends Pessoa {
     return this.#titulo;
   }
   
-  // 🆕 Setter para Data de Nascimento
+  // Setter para Data de Nascimento
   setDataNascimento(data) {
     if (data) {
       this.#dataNascimento = data;
@@ -43,7 +43,7 @@ export default class PF extends Pessoa {
     return false;
   }
 
-  // 🆕 Getter para Data de Nascimento
+  // Getter para Data de Nascimento
   getDataNascimento() {
     return this.#dataNascimento;
   }
