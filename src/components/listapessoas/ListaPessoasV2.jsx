@@ -49,6 +49,17 @@ export default function ListaPessoas() {
       dataIndex: "email",
       key: "email",
     },
+    // 🆕 Coluna Data de Nascimento / Data de Registro
+    {
+      title: tipo === "PF" ? "Nascimento" : "Registro",
+      dataIndex: tipo === "PF" ? "dataNascimento" : "dataRegistro",
+      key: "data",
+      width: 150,
+      render: (text) => {
+        if (!text) return 'N/A';
+        return new Date(text + "T03:00:00.000Z").toLocaleDateString('pt-BR');
+      },
+    },
     {
       title: tipo === "PF" ? "CPF" : "CNPJ",
       dataIndex: tipo === "PF" ? "cpf" : "cnpj",

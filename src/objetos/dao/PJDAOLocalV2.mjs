@@ -30,6 +30,10 @@ export default class PJDAO {
       nome: pj.getNome?.(),
       email: pj.getEmail?.(),
       cnpj: pj.getCNPJ?.(),
+      
+      // 🆕 IMPLEMENTAÇÃO: Adicionar a Data de Registro da Pessoa Jurídica (PJ)
+      dataRegistro: pj.getDataRegistro?.(),
+      
       endereco: end
         ? {
             cep: end.getCep?.(),
@@ -48,7 +52,7 @@ export default class PJDAO {
         ? {
             numero: ie.getNumero?.(),
             estado: ie.getEstado?.(),
-            dataRegistro: ie.getDataRegistro?.(),
+            dataRegistro: ie.getDataRegistro?.(), // Data de registro da Inscrição Estadual (campo existente)
           }
         : {},
     };

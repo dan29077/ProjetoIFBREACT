@@ -29,6 +29,13 @@ export default function VisualizaPessoa() {
       </div>
     );
   }
+  
+  // Função auxiliar para formatar a data
+  const formatarData = (dataString) => {
+    if (!dataString) return 'Não informado';
+    // Converte a string YYYY-MM-DD para o formato DD/MM/YYYY.
+    return new Date(dataString + "T03:00:00.000Z").toLocaleDateString('pt-BR');
+  };
 
   return (
     <div
@@ -51,10 +58,26 @@ export default function VisualizaPessoa() {
           <Descriptions.Item label="Nome">{pessoa.nome}</Descriptions.Item>
           <Descriptions.Item label="E-mail">{pessoa.email}</Descriptions.Item>
 
+          {/* Campos PF */}
           {tipo === "PF" ? (
-            <Descriptions.Item label="CPF">{pessoa.cpf}</Descriptions.Item>
+            <>
+              <Descriptions.Item label="CPF">{pessoa.cpf}</Descriptions.Item>
+              
+              {/* 🆕 IMPLEMENTAÇÃO: Data de Nascimento (PF) */}
+              <Descriptions.Item label="Data de Nascimento">
+                {formatarData(pessoa.dataNascimento)}
+              </Descriptions.Item>
+            </>
           ) : (
-            <Descriptions.Item label="CNPJ">{pessoa.cnpj}</Descriptions.Item>
+            /* Campos PJ */
+            <>
+              <Descriptions.Item label="CNPJ">{pessoa.cnpj}</Descriptions.Item>
+              
+              {/* 🆕 IMPLEMENTAÇÃO: Data de Registro (PJ principal) */}
+              <Descriptions.Item label="Data de Registro">
+                {formatarData(pessoa.dataRegistro)}
+              </Descriptions.Item>
+            </>
           )}
 
           {/* Endereço */}
@@ -74,7 +97,7 @@ export default function VisualizaPessoa() {
               : "Não informado"}
           </Descriptions.Item>
 
-          {/* Campos específicos */}
+          {/* Campos específicos adicionais (Título e IE) */}
           {tipo === "PF" ? (
             <>
               <Descriptions.Item label="Título Eleitoral">
@@ -87,7 +110,7 @@ export default function VisualizaPessoa() {
             <>
               <Descriptions.Item label="Inscrição Estadual">
                 {pessoa.ie?.numero
-                  ? `Nº ${pessoa.ie.numero} - ${pessoa.ie.estado} (${pessoa.ie.dataRegistro})`
+                  ? `Nº ${pessoa.ie.numero} - ${pessoa.ie.estado} (${formatarData(pessoa.ie.dataRegistro)})`
                   : "Não informado"}
               </Descriptions.Item>
             </>

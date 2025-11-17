@@ -1,3 +1,5 @@
+// src/componentes/cadastrapessoas/PessoaFormOOV2.jsx
+
 import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Radio, message } from "antd";
 import { useParams, useNavigate } from "react-router-dom";
@@ -57,7 +59,19 @@ export default function PessoaFormOOV2() {
         if (tipoParam === "PF") {
           valores.cpf = pessoa.cpf;
           valores.titulo = pessoa.titulo || { numero: "", zona: "", secao: "" };
+          
+          // 🆕 IMPLEMENTAÇÃO: Carregar Data de Nascimento (PF)
+          valores.dataNascimento = pessoa.dataNascimento 
+              ? dayjs(pessoa.dataNascimento) 
+              : null;
+              
         } else {
+          
+          // 🆕 IMPLEMENTAÇÃO: Carregar Data de Registro (PJ principal)
+          valores.dataRegistro = pessoa.dataRegistro 
+              ? dayjs(pessoa.dataRegistro) 
+              : null; 
+              
           const ieObj = pessoa.ie || {};
           valores.cnpj = pessoa.cnpj;
           valores.ie = {
@@ -114,6 +128,18 @@ export default function PessoaFormOOV2() {
         pf.setCPF(values.cpf);
         pf.setEndereco(end);
 
+        // 🆕 IMPLEMENTAÇÃO: Set Data de Nascimento (PF)
+        if (values.dataNascimento) {
+          const dataNasc = values.dataNascimento;
+          // Converte dayjs para string no formato YYYY-MM-DD
+          const dataNascimentoString =
+            dataNasc && typeof dataNasc.format === "function"
+              ? dataNasc.format("YYYY-MM-DD")
+              : dataNasc || "";
+
+          pf.setDataNascimento(dataNascimentoString);
+        }
+        
         if (values.titulo) {
           const t = new Titulo();
           t.setNumero(values.titulo.numero);
@@ -138,20 +164,32 @@ export default function PessoaFormOOV2() {
         pj.setEmail(values.email);
         pj.setCNPJ(values.cnpj);
         pj.setEndereco(end);
+        
+        // 🆕 IMPLEMENTAÇÃO: Set Data de Registro (PJ principal)
+        if (values.dataRegistro) {
+          const dataReg = values.dataRegistro;
+          // Converte dayjs para string no formato YYYY-MM-DD
+          const dataRegistroString =
+            dataReg && typeof dataReg.format === "function"
+              ? dataReg.format("YYYY-MM-DD")
+              : dataReg || "";
+
+          pj.setDataRegistro(dataRegistroString);
+        }
 
         if (values.ie) {
           const ie = new IE();
           ie.setNumero(values.ie.numero);
           ie.setEstado(values.ie.estado);
 
-          // 👇 converte dayjs → string para salvar no DAO
+          // 👇 Lógica existente para IE dataRegistro (dataRegistro da Inscrição Estadual)
           const dr = values.ie.dataRegistro;
-          const dataRegistro =
+          const dataRegistroIE =
             dr && typeof dr === "object" && typeof dr.format === "function"
               ? dr.format("YYYY-MM-DD")
               : dr || "";
 
-          ie.setDataRegistro(dataRegistro);
+          ie.setDataRegistro(dataRegistroIE);
           pj.setIE(ie);
         }
 
