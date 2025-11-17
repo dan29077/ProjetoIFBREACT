@@ -36,11 +36,8 @@ export default class PF extends Pessoa {
   
   // Setter para Data de Nascimento
   setDataNascimento(data) {
-    if (data) {
       this.#dataNascimento = data;
-      return true;
-    }
-    return false;
+ 
   }
 
   // Getter para Data de Nascimento

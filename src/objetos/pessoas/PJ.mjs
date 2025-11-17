@@ -36,11 +36,7 @@ export default class PJ extends Pessoa {
   
   // Setter para Data de Registro
   setDataRegistro(data) {
-    if (data) {
       this.#dataRegistro = data;
-      return true;
-    }
-    return false;
   }
 
   // Getter para Data de Registro
